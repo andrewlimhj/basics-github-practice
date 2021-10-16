@@ -34,6 +34,14 @@ var main = function (input) {
     playerWins = playerWins + 1;
   }
 
+  if (input != secretWord) {
+    playerWins = 0;
+  }
+
+  console.log("user guess is " + input);
+  console.log("secret word is " + secretWord);
+  console.log("player win count is " + playerWins);
+
   var myOutputValue =
     "The secret word is " +
     secretWord +
@@ -43,7 +51,7 @@ var main = function (input) {
     playerWins +
     ".";
 
-  // if user guess correctly twice, then user wins!
+  // if user guess correctly twice in a row, then user wins!
 
   if (playerWins == 2 && input == secretWord) {
     myOutputValue =
@@ -54,9 +62,6 @@ var main = function (input) {
       ". Your win streak is " +
       playerWins +
       ".";
-
-    console.log("user guess is " + input);
-    console.log("secret word is " + secretWord);
   }
   return myOutputValue;
 };
