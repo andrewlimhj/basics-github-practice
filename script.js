@@ -14,6 +14,8 @@ var rollDice = function () {
   return resultInteger;
 };
 
+var randomWins = rollDice() + 1;
+
 var main = function (input) {
   // Generate random number
   var randomNumber = rollDice();
@@ -41,6 +43,8 @@ var main = function (input) {
   console.log("user guess is " + input);
   console.log("secret word is " + secretWord);
   console.log("player win count is " + playerWins);
+  console.log("random wins needed is " + randomWins);
+  console.log("random number is " + randomNumber);
 
   var myOutputValue =
     "The secret word is " +
@@ -49,11 +53,12 @@ var main = function (input) {
     input +
     ". Your win is " +
     playerWins +
-    ".";
+    ". <br><br> Win streak needed is " +
+    randomWins;
 
   // if user guess correctly twice in a row, then user wins!
 
-  if (playerWins == 2 && input == secretWord) {
+  if (playerWins == randomWins && input == secretWord) {
     myOutputValue =
       "You win! The secret word is " +
       secretWord +
@@ -62,6 +67,10 @@ var main = function (input) {
       ". Your win streak is " +
       playerWins +
       ".";
+
+    playerWins = 0;
+    randomWins = rollDice() + 1;
   }
+
   return myOutputValue;
 };
